@@ -1,13 +1,9 @@
-MICRO-MACRO MULTISECTORAL MODEL - Conflict Inflation Version (KALECKI)
+MICRO-MACRO MULTISECTORAL MODEL - Conflict Inflation and Distribution Version
 
 *********************************************************************************************************************************************
 
 This model is a new version of the model created by Dweck(2006). 
 This version was reviewed by João Santoro.
-
-What was introduced in this new version:
-
-
 
 *********************************************************************************************************************************************
 
@@ -71,80 +67,6 @@ TIMELINE OF EVENTS
 
 
 ************************************************************************************************************************************************
-
-MODEL SWITCHS
-
-switch_autonomous_consumption: defines the way the autonomous consumption grows.
-	0 = Quality does not affect the rate of growth of autononomous consumption, only classes financial assets matters
-	1 = Quality does affect the rate of growth of autonomous consumption
-
-switch_autonomous_investment: defines how strong is the effect of the desired autonomous investment trought time
-	0 = Desired_Autonomous_Investment is constant trought all time periods. It is a parameter.
-	1 = Desired_Autonomous_Investment is stronger in the first 15 periods. Then, it becames weaker after that and after 35 time periods, it is half of the initial value, for the rest of the simulation
-
-switch_debt: defines if firms can sell capital goods in order to mantain a desired debt rate or not
-	0 = Firms do not sell capital goods to adjust the debt rate to the desifred value
-	1 = If current debt rate is higher than desired, the firm can sell capital goods, starting with the lowest in productivity, at a discounted price to adjust the stock of debt.
-
-switch_delivery_delay: determines if the delivery delay contributes to the firm's competitiveness or not.
-	0 = Delivery_Delay does not contribute to firm's competitiveness, only price and quality
-	1 = Delivery_Delay does contribute to firm's competitiveness
-
-switch_strategic_markup: determines how strategic markup is calculated
-	0 = Strategic_Markup will depend on how firm's determine desired markup, with two possible strategies (see switch_desired_markup)
-  1 = Strategic_Markup will be determined by the difference between firm's competitiveness and sector's average competitiveness. In that case, desired markup will always be the strategic markup
-
-switch_desired_markup: determines the firm's strategy on setting markup
-	0 = Desired_Markup will depend on apropriation of profits in the markup differential and market-share expantion
-	1 = Desired_Markup will only depend on the mark-up differential
-
-switch_government_expenses_ceiling: determines if the government uses or not the expenses ceiling fiscal rule
-	0 = Use Expense Ceiling Fiscal Rule since the first time period
-	100 = Use Expense Ceiling Fiscal Rule since the time 100
-	1000 = Do not use Expense Ceiling Fiscal Rule
-
-switch_government_surplus target: determines if the government uses or not the surplus target fiscal rule
-	0 = Use Surplus Target Fiscal Rule since the first time period
-	100 = Use Surplus Target Fiscal Rule since the time 100
-	1000 = Do not use Surplus Target Fiscal Rule
-
-
-MODEL PARAMETER CONTROLS
-
-crisis_threshold: sets the real GDP limit to be consider a crisis. 
-	
-gama_variation: defines the marginal incriment to gama. If the value is zero, gama does not change and it is fixed for all time periods.
-max_gama: defines the maximum value for gama.
-min_gama: defines the minimum value for gama.
-
-max_autonomous_consumption_variation: defines the maximum value for the variation in the autonomous consumption.
-min_autonomous_consumption_variation: defines the minimum value for the variation in the autonomous consumption.
-
-external_shock_parameter: defines the percent value of the external shock in the external income growth.
-external_shock_period: defines in which period the external shock happens.
-external_shock_duration: defines how many periods the extenal shock lasts.
-
-variation_government_surplus_parameter: defines the marginal increment to the surplus target if debt adjustment rule is in effect.
-max_public_debt: defines the maximum accepted value of the public debt to adjust the surplus target. Beyond that value, government increases the surplus target.
-min_public_debt: defines the minimum accepted value of the public debt to adjust the surplus target. Beyond that value, government decreases the surplus target.
-max_government_surplus_rate_target: defines the maximum value of the surplus rate target.
-min_government_surplus_rate_target: defines the minimum value of the surplus rate target.
-
-unemployment_benefit: defines the percentage of the average_wage that government will pay for the unemployed. If the value is zero, the government does no pay unemployment benefits.
-
-inflation_sensitivity: defines how inflation gap affects the interest rate in the taylor rule. If the value is zero, inflation does not affect the interest rate.
-unemployment_sensitivity: defines how unemployment gap affects the interest rate in the taylor rule. If the value is zero, unemployment does not affect the interest rate.
-
-number_object_firms
-avg_price_initial
-foreign_price_initial
-productivity_initial
-quality_initial
-Gama
-
-
-
-
 
 
 
