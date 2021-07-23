@@ -1,0 +1,222 @@
+/*****ANALYSIS*****/
+
+EQUATION("P")
+/*
+Price Index
+*/
+RESULT(V("Price_Index"))
+
+
+EQUATION("P_G")
+/*
+Inflation
+*/
+RESULT(V("Inflation"))
+
+
+
+EQUATION("GDP_G")
+/*
+GDP real growth rate
+*/
+RESULT(V("Real_Growth_Rate"))
+
+
+EQUATION("G_n")
+/*
+GDP nominal growth rate
+*/
+RESULT(V("Growth_rate"))
+
+
+EQUATION("Cri")
+/*
+Crisis counters
+*/
+RESULT(V("Likelihood_Crisis"))
+
+
+EQUATION("C")
+/*
+Quarterly Nominal Consumption
+*/
+RESULT(V("Q_Consumption"))
+
+
+EQUATION("Q_C_r")
+/*
+Quarterly Real Consumption
+*/
+v[0]=V("Q_Consumption");
+v[1]=V("Price_Index");
+v[2]=v[0]/v[1];
+RESULT(v[2])
+
+
+EQUATION("CON_G")
+/*
+Quarterly Real Consumption Growth rate
+*/
+v[0]=V("Q_C_r");
+v[1]=VL("Q_C_r", 1);
+if (v[1]!=0)
+v[2]=(v[0]-v[1])/v[1];
+else
+v[2]=0;
+RESULT(v[2])
+
+
+EQUATION("I")
+/*
+Quarterly Nominal Investment
+*/
+RESULT(V("Q_Investment"))
+
+
+EQUATION("Q_I_r")
+/*
+Quarterly Real Investment
+*/
+v[0]=V("Q_Investment");
+v[1]=V("Price_Index");
+v[2]=v[0]/v[1];
+RESULT(v[2])
+
+
+EQUATION("INV_G")
+/*
+Quarterly Real Investment Growth rate
+*/
+v[0]=V("Q_I_r");
+v[1]=VL("Q_I_r", 1);
+if (v[1]!=0)
+v[2]=(v[0]-v[1])/v[1];
+else
+v[2]=0;
+RESULT(v[2])
+
+
+EQUATION("PROD")
+/*
+Average Productivity
+*/
+RESULT(V("Avg_Productivity"))
+
+
+EQUATION("PROD_G")
+/*
+Average Productivity Growth
+*/
+v[0]=V("PROD");
+v[1]=VL("PROD", 1);
+if (v[1]!=0)
+v[2]=(v[0]-v[1])/v[1];
+else
+v[2]=0;
+RESULT(v[2])
+
+
+EQUATION("SURPLUS")
+/*
+Real Surplus
+*/
+v[0]=V("Total_Surplus");
+v[1]=V("Price_Index");
+v[2]=v[0]/v[1];
+RESULT(v[2])
+
+
+EQUATION("WAGE")
+/*
+Real Wages
+*/
+v[0]=V("Total_Wages");
+v[1]=V("Price_Index");
+v[2]=v[0]/v[1];
+RESULT(v[2])
+
+
+EQUATION("SURPLUS_G")
+/*
+Real Surplus Growth rate
+*/
+v[0]=V("SURPLUS");
+v[1]=VL("SURPLUS", 1);
+if (v[1]!=0)
+v[2]=(v[0]-v[1])/v[1];
+else
+v[2]=0;
+RESULT(v[2])
+
+
+EQUATION("WAGE_G")
+/*
+Real Wages growth rate
+*/
+v[0]=V("WAGE");
+v[1]=VL("WAGE", 1);
+if (v[1]!=0)
+v[2]=(v[0]-v[1])/v[1];
+else
+v[2]=0;
+RESULT(v[2])
+
+
+EQUATION("Q_G_r")
+/*
+Quarterly Real Government Expenses
+*/
+v[0]=V("Government_Expenses");
+v[1]=V("Price_Index");
+v[2]=v[0]/v[1];
+RESULT(v[2])
+
+
+EQUATION("GOV_G")
+/*
+Quarterly Real Government Expenses Growth rate
+*/
+v[0]=V("Q_G_r");
+v[1]=VL("Q_G_r", 1);
+if (v[1]!=0)
+v[2]=(v[0]-v[1])/v[1];
+else
+v[2]=0;
+RESULT(v[2])
+
+
+
+EQUATION("Q_M_r")
+/*
+Quarterly Real Imports
+*/
+v[0]=V("Total_Imports");
+v[1]=V("Price_Index");
+v[2]=v[0]/v[1];
+RESULT(v[2])
+
+
+EQUATION("IMP_G")
+/*
+Quarterly Real Imports Growth rate
+*/
+v[0]=V("Q_M_r");
+v[1]=VL("Q_M_r", 1);
+if (v[1]!=0)
+v[2]=(v[0]-v[1])/v[1];
+else
+v[2]=0;
+RESULT(v[2])
+
+
+EQUATION("DEBT_G")
+/*
+Firm's Debt Growth rate
+*/
+v[0]=V("DEBT");
+v[1]=VL("DEBT", 1);
+if (v[1]!=0)
+v[2]=(v[0]-v[1])/v[1];
+else
+v[2]=0;
+RESULT(v[2])

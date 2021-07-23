@@ -1,0 +1,30 @@
+/*****SECTORS VARIABLES*****/
+
+
+/*****SECTOR BEHAVIOUR VARIABLES*****/
+#include "fun_sector_behavior.h"
+
+/*****PRODUCTION AND DEMAND*****/
+#include "fun_sector_demand.h"
+
+/*****SECTOR VARIABLES RELATED TO THE EXTERNAL SECTOR*****/
+#include "fun_sector_external.h"
+
+/*****SECTOR AGGREGATES, AVERAGES AND MAXIMUMS*****/
+#include "fun_sector_aggregates.h"
+
+/*****ANALYSIS VARIABLES*****/
+#include "fun_sector_analysis.h"
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,154 @@
+MICRO-MACRO MULTISECTORAL MODEL - Conflict Inflation Version (KALECKI)
+
+*********************************************************************************************************************************************
+
+This model is a new version of the model created by Dweck(2006). 
+This version was reviewed by Jo„o Santoro.
+
+What was introduced in this new version:
+
+
+
+*********************************************************************************************************************************************
+
+How to read the code:
+
+All objects use full capital letters
+All variables begin with capital letters
+All parameters begin with small letters
+All functions are variables with the word "_Function" in the end, located at the Macro object
+Variables are grouped by objects in additional files
+
+*********************************************************************************************************************************************
+
+MODEL DESCRIPTION (Possas and Dweck, 2004):
+
+The model is a micro-macro multisectoral evolutionary simulation model that combines neo-Schumpeterian evolutionary microfoundations with some post-Keynesian and Kaleckian assumptions. The main objective of the model is to put together analytical elements that may be useful to investigate dynamic properties of capitalist economies which depend mainly on micro-macro relations, with a special regard to the analysis of economic development. 
+
+Multisectoral model: Input-output matrices are employed together with other expenditure matrices to endogenize main components of final demand. Other components of final demand, as exports and government expenses, are left exogenous.
+
+Dynamic model: It generates trajectories in discrete time. Since causality is based on decisions to produce and to spend (effective demand), no equilibrium positions are ever required. 
+
+Firms are the basic units: Each firm belongs only to one sector. Structural changes in each sector are endogenously dependent on firms behavior, especially as a result of technological and strategic diversity.  Some basic features are:
+	(i) prices are decided by firms according to expected markups, subject to endogenous change due to strategic market concerns;
+	(ii) effective demand causality in production decisions and sales (i.e. absence of market supply and demand equilibrium) involves distinguishing between output and sales, as well as putting emphasis on short period expectations concerning sales, assumed to be endogenous (extrapolative);
+	(iii) investment decisions follow basically the same rule, but allowing for an important autonomous component related to technical progress, and imposing financial debt constraints.
+
+Interactions at the sectoral level: Demand for each sector is in part determined endogenously by firms and household decisions to spend and in part exogenously by exports and government expenditure, and is divided among firms by a "replicator"ù dynamic equation. Production and investment decisions by each firm determine, respectively, the demand for intermediate and for capital goods, and household decisions determine demand for consumption goods.
+
+Exogenous block: In addition to the above endogenous core, the model also involves three partially exogenous blocks or ‚Äúsectors‚Äù treated separately: foreign sector (trade and capital flows); government (public expenditure, taxes and economic policy); and a financial sector (debts, capital investment and interest rates).
+
+Firms strategies and decisions can be divided in three subsystems:
+	(i) production, prices and profits: production decisions are based on expected sales for the production period, extrapolated from the average of some previous periods. As to prices, themodel assumes each sector to be an oligopoly with some degree of price competition as well as of product differentiation, following a version of Kalecki's price model (1954, ch. 1), in which actual price is a weighted average of the price corresponding to the expected markup and the industry average price, but subject to change according to a feedback from the firm's competitive performance.
+	(ii) investment: investment decision rules on new capacity are also based on extrapolated expected sales from some previous (investment) periods but limited by a debt constraint following Kalecki's principle of increasing risk (1954, ch. 8). Wider financial features are included in these decisions to capture the influence of assets and liabilities structure of the firm, represented by debt/equity ratio, retained profits and liquidity demand.
+	(iii) technological search:  technological search combines different approaches: both innovative and imitative searches follow a stochastic process as in Nelson and Winter (1982) and a learning process is also included drawing on the vintage model by Silverberg et al. (1988), from which a payback period criterion for equipment replacement decisions is also applied.
+
+TIMELINE OF EVENTS
+
+1. Firms receive new capital at the beginning of each investment period.
+2. Planned Production: first firm's decision. Differentiated among sectors: for consumption and intermediate goods it depends on expected sales; for capital goods it depends of effective orders. This is one of the most important effects of the effective demand principle and it was the way Keynes presented it: the decision to produce depends, given the cost structure, on the demand expectations of firms.
+3. Effective Productions: it depends on the productive capacity and inputs availability, given de planned production. Firms in every sector use labor, capital and inputs in order to produce, based on a Leontief production function.
+4. Price Decision: second firm's decision. Weighted average among desired price and average market price; desired price is determined by a desired mark up over variable cost.
+5. Total sectoral orders
+	i. Consumption Goods: depends on income classes and government expenditures and on exports.
+	ii. Capital Goods: depends on firms and government decisions to invest.
+	iii. Intermediate Goods: third firm's decision: depends on firm's decision to order intermediate goods for next period production.
+6. External Sector (imports): part of the total expenditure is supplied by imports given fixed imports coefficient specific to each sector. Exports are determined by a fixed coefficient, over the rest of the world income, (measured in domestic currency) and the corresponding income elasticity on the world market.
+7. Government Sector: government hires workers, invest and consume goods from consumption sector. Total expenditures, as it will be explained bellow depends on the fiscal rule, which will be the main object of simulation. Tax revenues are both income tax and indirect tax over production.
+8. Firm's orders: effective orders received by a firm depend on total sectorial demand, and on the firm's market share, determined by the replicator dynamic equation, under the effect of firm's competitiveness.
+9. Sales: actual sales are determined by the effective orders, which may or may not correspond to the expectations that previously defined the level of production. This interaction between sales and production over time creates a mechanism of dynamic induction over the subsequent production decisions, via changes on the expected behavior of future sales.
+10. Income creation
+	i. Functional distribution
+		Wages: determined by government wages and the level of private employment which depends on total private production, given the unitary wage per sector;
+		Profits: determined by revenues of Sales given total costs; part is distributed to households and the rest is reinvested or allocated at the financial sector.
+	ii. Personal distribution: wages and profits are converted into personal income classes a matrix of personal income appropriation (personal income class x functional).
+11. Investment Decision: fourth firm's decision: given the financial restriction, at the end of each investment period firms must decide the amount of investment. This decision is divided into three different components:
+	i. Investment on capacity expansion (induced liquid investment): depends on expected sales and the capacity utilization level;
+	ii. Investment on physical depreciation: added to the first one, they both comprise the induced gross investment;
+	iii. Investment given the technological obsolescence of capital equipment (autonomous investment): depends on the product and process innovative success;
+12. Innovative Success: the innovation and diffusion (imitation) processes follow closely those 2 stage processes proposed by Nelson & Winter (1982, ch. 12). Technological search by any firm is accomplished through process and product R&D. The assumption made here is that the industrial sector being modeled introduces technical change basically embodied in the equipment ordered or it changes the quality of its goods. Internal process R&D is assumed to be crucial for design and technical improvement of the capital equipment.
+13. Entry and Exit: the total number of firms is not constant, but entry only occurs in case of exit. The possibility of entry of a new firm is limited to an exit caused by financial problems.
+
+
+************************************************************************************************************************************************
+
+MODEL SWITCHS
+
+switch_autonomous_consumption: defines the way the autonomous consumption grows.
+	0 = Quality does not affect the rate of growth of autononomous consumption, only classes financial assets matters
+	1 = Quality does affect the rate of growth of autonomous consumption
+
+switch_autonomous_investment: defines how strong is the effect of the desired autonomous investment trought time
+	0 = Desired_Autonomous_Investment is constant trought all time periods. It is a parameter.
+	1 = Desired_Autonomous_Investment is stronger in the first 15 periods. Then, it becames weaker after that and after 35 time periods, it is half of the initial value, for the rest of the simulation
+
+switch_debt: defines if firms can sell capital goods in order to mantain a desired debt rate or not
+	0 = Firms do not sell capital goods to adjust the debt rate to the desifred value
+	1 = If current debt rate is higher than desired, the firm can sell capital goods, starting with the lowest in productivity, at a discounted price to adjust the stock of debt.
+
+switch_delivery_delay: determines if the delivery delay contributes to the firm's competitiveness or not.
+	0 = Delivery_Delay does not contribute to firm's competitiveness, only price and quality
+	1 = Delivery_Delay does contribute to firm's competitiveness
+
+switch_strategic_markup: determines how strategic markup is calculated
+	0 = Strategic_Markup will depend on how firm's determine desired markup, with two possible strategies (see switch_desired_markup)
+  1 = Strategic_Markup will be determined by the difference between firm's competitiveness and sector's average competitiveness. In that case, desired markup will always be the strategic markup
+
+switch_desired_markup: determines the firm's strategy on setting markup
+	0 = Desired_Markup will depend on apropriation of profits in the markup differential and market-share expantion
+	1 = Desired_Markup will only depend on the mark-up differential
+
+switch_government_expenses_ceiling: determines if the government uses or not the expenses ceiling fiscal rule
+	0 = Use Expense Ceiling Fiscal Rule since the first time period
+	100 = Use Expense Ceiling Fiscal Rule since the time 100
+	1000 = Do not use Expense Ceiling Fiscal Rule
+
+switch_government_surplus target: determines if the government uses or not the surplus target fiscal rule
+	0 = Use Surplus Target Fiscal Rule since the first time period
+	100 = Use Surplus Target Fiscal Rule since the time 100
+	1000 = Do not use Surplus Target Fiscal Rule
+
+
+MODEL PARAMETER CONTROLS
+
+crisis_threshold: sets the real GDP limit to be consider a crisis. 
+	
+gama_variation: defines the marginal incriment to gama. If the value is zero, gama does not change and it is fixed for all time periods.
+max_gama: defines the maximum value for gama.
+min_gama: defines the minimum value for gama.
+
+max_autonomous_consumption_variation: defines the maximum value for the variation in the autonomous consumption.
+min_autonomous_consumption_variation: defines the minimum value for the variation in the autonomous consumption.
+
+external_shock_parameter: defines the percent value of the external shock in the external income growth.
+external_shock_period: defines in which period the external shock happens.
+external_shock_duration: defines how many periods the extenal shock lasts.
+
+variation_government_surplus_parameter: defines the marginal increment to the surplus target if debt adjustment rule is in effect.
+max_public_debt: defines the maximum accepted value of the public debt to adjust the surplus target. Beyond that value, government increases the surplus target.
+min_public_debt: defines the minimum accepted value of the public debt to adjust the surplus target. Beyond that value, government decreases the surplus target.
+max_government_surplus_rate_target: defines the maximum value of the surplus rate target.
+min_government_surplus_rate_target: defines the minimum value of the surplus rate target.
+
+unemployment_benefit: defines the percentage of the average_wage that government will pay for the unemployed. If the value is zero, the government does no pay unemployment benefits.
+
+inflation_sensitivity: defines how inflation gap affects the interest rate in the taylor rule. If the value is zero, inflation does not affect the interest rate.
+unemployment_sensitivity: defines how unemployment gap affects the interest rate in the taylor rule. If the value is zero, unemployment does not affect the interest rate.
+
+number_object_firms
+avg_price_initial
+foreign_price_initial
+productivity_initial
+quality_initial
+Gama
+
+
+
+
+
+
+
+
+
+
+
