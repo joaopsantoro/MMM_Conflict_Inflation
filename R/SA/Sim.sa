@@ -1,0 +1,10 @@
+wage_aspiration_bargain 0 2 f: 0 1
+wage_CPI 0 2 f: 0 1
+wage_productivity 0 2 f: 0 1
+wage_bargain_interval 0 2 f: 0 0.02
+wage_freq 0 2 i: 1 4
+e_price 0 2 f: 0.5 1.5
+e_quality 0 2 f: 0.5 1.5
+adjust_m 0 2 f: 0 0.5
+theta 0 2 f: 0.1 1
+markup_freq 0 2 i: 1 4
